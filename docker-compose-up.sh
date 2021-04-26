@@ -11,13 +11,13 @@ else
     touch $FILE
 fi
 
-if [ "$1" = "nvidia" ]; then
+if [ "$1" = "gpu" ]; then
     if [ $DISPLAY = :1 ]; then
 	echo "Your DISPLAY environment is :1"
 	export DISPLAY_ENV=:0
 	export DISPLAY_PATH=X1
     fi
-    echo "Use nvidia"
+    echo "Use GPU"
     DISPLAY=$DISPLAY xhost si:localuser:root
     docker-compose -f docker-compose.nvidia.yml up
 elif [ $# = 0 ]; then
